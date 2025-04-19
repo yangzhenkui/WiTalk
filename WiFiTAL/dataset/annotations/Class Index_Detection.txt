@@ -1,0 +1,7 @@
+1 run
+2 walk
+3 jump
+4 wave
+5 bend
+6 stand
+7 sit

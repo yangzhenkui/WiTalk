@@ -1,0 +1,7 @@
+LICENSE
+README.md
+setup.py
+TAD.egg-info/PKG-INFO
+TAD.egg-info/SOURCES.txt
+TAD.egg-info/dependency_links.txt
+TAD.egg-info/top_level.txt
