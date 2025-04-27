@@ -25,21 +25,21 @@ mkdir -p $LOG_DIR
 TIMESTAMP=$(date +%Y%m%d_%H%M%S)
 LOG_FILE="$LOG_DIR/train_test_eval_$TIMESTAMP.log"
 
-# # 启动训练
-# echo "start training" | tee -a $LOG_FILE
-# CUDA_VISIBLE_DEVICES=$1 python3 TAD/utils/train.py configs/WiFiTAD.yaml >> $LOG_FILE 2>&1
+# 启动训练
+echo "start training" | tee -a $LOG_FILE
+CUDA_VISIBLE_DEVICES=$1 python3 TAD/utils/train.py configs/WiFiTAD.yaml >> $LOG_FILE 2>&1
 
-# # 检查训练是否成功
-# if [ $? -ne 0 ]; then
-#     echo "Training failed, check $LOG_FILE for details" | tee -a $LOG_FILE
-#     exit 1
-# fi
+# 检查训练是否成功
+if [ $? -ne 0 ]; then
+    echo "Training failed, check $LOG_FILE for details" | tee -a $LOG_FILE
+    exit 1
+fi
 
 # 启动检测
 echo "start detecting..." | tee -a $LOG_FILE
 CUDA_VISIBLE_DEVICES=$1 python3 TAD/utils/test.py configs/WiFiTAD.yaml >> $LOG_FILE 2>&1
 
-# # 检查检测是否成功
+# 检查检测是否成功
 if [ $? -ne 0 ]; then
     echo "Detection failed, check $LOG_FILE for details" | tee -a $LOG_FILE
     exit 1

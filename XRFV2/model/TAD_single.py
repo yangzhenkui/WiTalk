@@ -129,6 +129,7 @@ class TAD_single(nn.Module):
         x = input[self.modality]
         B, C, L = x.size()
 
+        # to use WiFi single modality, simply comment out the text-related code.
         x_text = self.cal_text_features_2d()
         # print(x.shape, x_text.shape)
 

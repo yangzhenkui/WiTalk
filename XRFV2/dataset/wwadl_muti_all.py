@@ -2,7 +2,6 @@
 import torch
 from torch.utils.data import Dataset
 from dataset.wwadl import WWADLDatasetSingle
-from model.embedding import TextEmbedding
 
 
 imu_name_to_id = {
@@ -123,7 +122,5 @@ class WWADLDatasetMutiAll(Dataset):
                 data['imu'] = airpods_data['airpods']
             if label is None:
                 label = airpods_label
-        # 补充文本特征
-        # data['text'] = TextEmbedding(generate_description(label, action_labels))
         return data, label
 

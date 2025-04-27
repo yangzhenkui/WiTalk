@@ -15,14 +15,6 @@ GLOBAL_SEED = 3407
 
 logger = logging.getLogger(__name__)
 
-
-label = ["The system can recognize actions such as stretching, pouring water, writing, cutting fruit, eating fruit, and taking medicine.",
-"It also detects actions like drinking water, sitting down, turning on/off the eye protection lamp, and opening/closing curtains.",
-"The system can identify activities such as opening/closing windows, typing, opening envelopes, throwing garbage, and picking fruit.",
-"Other actions include picking up items, answering the phone, using a mouse, wiping the table, and writing on the blackboard.",
-"It also recognizes actions like washing hands, using a phone, reading, watering plants, and walking to different locations (e.g., bed, chair, cabinet, window, blackboard).",
-"Finally, the system can detect movements like getting out of bed, standing up, lying down, standing still, and lying still."]
-
 # Worker 初始化函数
 def worker_init_fn(worker_id):
     np.random.seed(GLOBAL_SEED + worker_id)

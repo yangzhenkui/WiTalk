@@ -9,7 +9,7 @@ project_path = '/root/shared-nvme/zhenkui/code/WiXTAL/XRFV2'
 dataset_root_path = '/root/shared-nvme/dataset/XRFV2'
 causal_conv1d_path = '/root/shared-nvme/video-mamba-suite/causal-conv1d'
 mamba_path = '/root/shared-nvme/video-mamba-suite/mamba'
-python_path = '/base/mambaforge/bin/python'
+python_path = '/root/.conda/envs/mamba/bin/python'
 sys.path.append(project_path)
 os.environ["PYTHONPATH"] = f"{project_path}:{causal_conv1d_path}:{mamba_path}:" + os.environ.get("PYTHONPATH", "")
 
@@ -25,10 +25,10 @@ if __name__ == '__main__':
     day = get_day()
 
     model = 'TAD_single'
-    gpu = 1
+    gpu = 0
 
     model_str_list = [
-        ('mamba', 8, 80, {'layer': 8}),
+        ('mamba', 16, 80, {'layer': 8, 'i':2}),
         # ('Transformer', 16, 80, {'layer': 8}),
         # ('Transformer', 16, 80, {'layer': 8, 'embed_type': 'Norm'}),
         # ('wifiTAD', 16, 80, {'layer': 8}),
@@ -88,7 +88,6 @@ if __name__ == '__main__':
 
             # TRAIN =============================================================================================
             run = Run_config(config, 'train')
-            run.python_path = "/base/mambaforge/bin/python"
 
             # os.system(
             #     f"CUDA_VISIBLE_DEVICES={run.ddp_devices} {run.python_path} -m torch.distributed.launch --nproc_per_node {run.nproc_per_node} "
@@ -101,7 +100,7 @@ if __name__ == '__main__':
                 f"{run.main_path} --is_train true --config_path {run.config_path}"
             )
 
-            print(train_command)
+            # print(train_command)
             # exit(-1)
 
             # 执行训练命令并等待其完成

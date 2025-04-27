@@ -86,10 +86,6 @@ class mmCLIP_gpt_multi_brach_property_v3(nn.Module):##implemented as paper
         if self.if_use_text_proj:
             text_embeds = self.text_proj(text_embeds)
         text_embeds = text_embeds.mean(dim=1)
-        # text_embeds = text_embeds.repeat(1, (512 + text_embeds.size(1) - 1) // text_embeds.size(1), 1)  # 扩展到接近512
-        # text_embeds = text_embeds[:, :512, :]  # 截取到精确的 512
-        # text_embeds.to(device)
-        # text_embeds = text_embeds.squeeze(0)  # 去掉第一维
         return text_embeds
 
     def cal_hm_features(self, hm_input):

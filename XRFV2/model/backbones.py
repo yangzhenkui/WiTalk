@@ -11,7 +11,6 @@ from model.TriDet.backbones import SGPBackbone
 from model.TemporalMaxer.backbones import ConvPoolerBackbone
 from model.Ushape.backbones import UNetBackbone, UNetBackbone2
 from model.models import register_backbone_config, register_backbone
-from model.resent1d import resnet18
 from model.VisonMamba.backones import VisionMambaBackbone
 
 @register_backbone_config('mamba')
